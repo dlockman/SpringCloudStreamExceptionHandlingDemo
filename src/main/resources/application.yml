@@ -1,0 +1,17 @@
+spring:
+  cloud:
+      stream:
+        bindings:
+          input:
+            destination: input
+            group: myGroup
+            binder: kafka
+          error:
+            destination: errors
+        kafka.bindings.input.consumer.autoCommitOnError: true
+        binders:
+          kafka:
+            type: kafka
+            environment.spring.cloud.stream.kafka.binder:
+              brokers: localhost:9092
+              zkNodes: localhost:2181
